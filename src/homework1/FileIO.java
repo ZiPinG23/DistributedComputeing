@@ -7,7 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class FileIO {
+    private static final Lock lock = new ReentrantLock();
     static Data search(String id,String filename) {
         try {
             var in = Files.newInputStream(Path.of("./src/homework1/data/" + filename));
@@ -29,6 +33,8 @@ public class FileIO {
     static void record(Data data,String filename){
         var path = Path.of("./src/homework1/data/" + filename);
         try {
+            lock.lock();
+
             List<Data> all_data = new ArrayList<>();
 
             var in = Files.newInputStream(path);
@@ -62,6 +68,8 @@ public class FileIO {
                 writer.write("\n");
             }
             writer.close();
+
+            lock.unlock();
         } catch (IOException e) {
             e.printStackTrace();
         }
