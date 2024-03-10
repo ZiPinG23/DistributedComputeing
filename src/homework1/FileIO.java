@@ -14,7 +14,7 @@ public class FileIO {
     private static final Lock lock = new ReentrantLock();
     static Data search(String id,String filename) {
         try {
-            var in = Files.newInputStream(Path.of("./src/homework1/data/" + filename));
+            var in = Files.newInputStream(Path.of("./src/homework1/" + filename));
             var scanner = new Scanner(in);
 
             while (scanner.hasNext()) {
@@ -31,7 +31,7 @@ public class FileIO {
         return null;
     }
     static void record(Data data,String filename){
-        var path = Path.of("./src/homework1/data/" + filename);
+        var path = Path.of("./src/homework1/" + filename);
         try {
             lock.lock();
 

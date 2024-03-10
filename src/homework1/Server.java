@@ -64,6 +64,7 @@ public class Server {
                             else if(operation.getType()==2){//表示消费操作
                                 id=operation.getId();
                                 data=FileIO.search(id,fileName);
+                                System.out.println(operation.getMoney());
                                 if(data==null){
                                     operation.setType(7);
                                 }
@@ -71,8 +72,9 @@ public class Server {
                                     if(data.getMoney()>=operation.getMoney()){
                                         data.setMoney(data.getMoney()- operation.getMoney());
                                         FileIO.record(data,fileName);
+                                        System.out.println(data.getMoney());
                                         operation.setType(4);
-                                        operation.setMoney(data.getMoney()- operation.getMoney());
+                                        operation.setMoney(data.getMoney());
                                     }
                                     else {
                                         operation.setType(5);
@@ -82,6 +84,7 @@ public class Server {
                             }
                             out.writeObject(operation);
                             out.flush();
+                            operation = (Operation) in.readObject();
                         }
                         finalClient.close();
                     }

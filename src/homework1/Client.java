@@ -19,7 +19,6 @@ public class Client {
         Socket server = null;
         int type=0;
         try {
-            String inputString;
             server = new Socket("127.0.0.1", 4444);// 向本机4444端口发出客户请求
             BufferedReader sin = new BufferedReader(new InputStreamReader(
                     System.in));
