@@ -6,7 +6,7 @@ public class Data implements Serializable {
     private String id;
     private double money;
 
-    public Data(String id, int money) {
+    public Data(String id, double money) {
         this.id = id;
         this.money = money;
     }
