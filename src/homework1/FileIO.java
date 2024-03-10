@@ -3,7 +3,7 @@ package homework1;
 import java.io.*;
 
 public class FileIO {
-    static Data search(String id,String filename){
+    static Data search(String id,String filename){ // 找id，包data
         Data data = null;
         return data;
     }
